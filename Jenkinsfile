@@ -6,8 +6,17 @@ pipeline {
     }
 
   }
+  
+  
   stages {
-    stage('Build') {
+    
+    stage('Checkout') {
+      steps {
+        git(url: 'https://github.com/SultanEid/bmi-calculator_codeAnalysis.git', branch: 'master')
+      }
+    }
+	
+	stage('Build') {
       steps {
         sh 'npm install'
       }
@@ -17,12 +26,6 @@ pipeline {
       steps {
         echo 'Running tests...'
         sh 'npm run test'
-      }
-    }
-
-    stage('Checkout') {
-      steps {
-        git(url: 'https://github.com/SultanEid/bmi-calculator_codeAnalysis.git', branch: 'master')
       }
     }
 
