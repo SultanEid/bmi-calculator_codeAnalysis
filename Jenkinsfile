@@ -1,32 +1,15 @@
 pipeline {
-  agent any
-  stages {
-    stage('checkout') {
-      steps {
-        echo 'Checkout repository '
-        git(url: 'https://github.com/SultanEid/bmi-calculator_codeAnalysis.git', branch: 'master')
-      }
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
+        }
     }
-
-    stage('setup') {
-      steps {
-        echo 'Installing dependencies'
-        sh 'npm install'
-      }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'npm install' 
+            }
+        }
     }
-
-    stage('test') {
-      steps {
-        echo 'Running Tests'
-        sh 'npm run test'
-      }
-    }
-
-    stage('Build') {
-      steps {
-        echo 'Building'
-      }
-    }
-
-  }
 }
