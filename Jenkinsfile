@@ -31,8 +31,6 @@ pipeline {
 	
 	stage ('Checking Snar Installation') {
 	steps{
-	echo 'Checking Curl installation'
-	sh 'apk add curl'
 	
 	echo 'Installing/Updating Sonar-Scanner'
 	sh ' set -eux SONAR_SCANNER_VERSION=4.0.0.1744'
