@@ -31,9 +31,6 @@ pipeline {
       }
     }
 	
-	stage ('Checking Snar Installation') {
-	steps{
-	
 	
 	stage('SCM') {
 	    steps{
@@ -52,6 +49,5 @@ pipeline {
 	    }
 	  }
 	
-		
+		}
   }
-}
